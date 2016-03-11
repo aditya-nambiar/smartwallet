@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Random;
 
 
+
 public class ScrollingActivity extends AppCompatActivity {
 
     private RecyclerView busRidesView;
@@ -48,6 +49,7 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -60,17 +62,15 @@ public class ScrollingActivity extends AppCompatActivity {
     protected void initViews() {
 
         busRidesView = (RecyclerView) findViewById(R.id.rv_activity_listofitems);
-        CashFlow a = new CashFlow();
-        a.ampm = "pm";
-        a.amt = 500;
-        a.desp = "Lent to shivam";
-        a.time_hours = 6;
-        a.time_minutes = 32;
+
         for (int i=0; i< 15; i++){
-            cashFlowList.add(a);
-            a.time_hours = randInt(1,11);
-            a.time_minutes = randInt(0,59);
+            CashFlow a = new CashFlow();
+            a.ampm = "PM";
+            a.desp = "Lent to Rahul";
+            a.time_hours = randInt(1,9);
+            a.time_minutes = randInt(11,59);
             a.amt = randInt(1, 1000);
+            cashFlowList.add(a);
         }
 
         initRunningRoutesList();
@@ -85,6 +85,7 @@ public class ScrollingActivity extends AppCompatActivity {
         busRidesView.setAdapter(mAdapter);
         System.out.println("InitRunnin");
     }
+
 
 
     @Override

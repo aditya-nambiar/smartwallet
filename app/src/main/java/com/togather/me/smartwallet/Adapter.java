@@ -2,9 +2,13 @@ package com.togather.me.smartwallet;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     Context mContext;
     List<CashFlow> mItems;
     LayoutInflater mInflater;
-
+    private Edit edit_dialog;
 
     public Adapter(Context context, List<CashFlow> items) {
         this.mContext = context;
@@ -38,10 +42,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
          CashFlow temp = mItems.get(position);
-        holder.time.setText(String.valueOf(temp.time_hours) + ": " + String.valueOf(temp.time_minutes));
+        holder.time.setText(String.valueOf(temp.time_hours) + ": " + String.valueOf(temp.time_minutes) + temp.ampm);
         holder.desp.setText(temp.desp);
-        holder.amt.setText("600");
-        System.out.println("dfdgdfg");
+        holder.amt.setText(String.valueOf(temp.amt));
     }
 
     public CashFlow getItem(int position) {
@@ -73,6 +76,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         public void onClick(View v) {
 
             CashFlow item = getItem(getAdapterPosition());
+            edit_dialog = new Edit(mContext);
+            edit_dialog.setCancelable(false);
+            edit_dialog.setCanceledOnTouchOutside(false);
+            edit_dialog.setCashFlow(item, Adapter.this);
+            edit_dialog.show();
+            Window window = edit_dialog.getWindow();
+            DisplayMetrics displaymetrics = new DisplayMetrics();
+            WindowManager wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            display.getMetrics(displaymetrics);
+            int height = (int) (displaymetrics.heightPixels * 0.8);
+
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, height);
+
         }
 
     }
