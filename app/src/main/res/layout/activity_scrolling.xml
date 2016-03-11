@@ -24,26 +24,27 @@
 
     <!--<include layout="@layout/content_scrolling" />-->
 
-    <android.support.v4.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_scrolling" android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:context=".ScrollingActivity">
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:fillViewport="true"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--tools:showIn="@layout/activity_scrolling" android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" tools:context=".ScrollingActivity">-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
 
-        <!--<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/text_margin" android:text="@string/large_text" />-->
 
-        <ListView
-            android:id="@+id/lvContacts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
-        </ListView>
+    <!--&lt;!&ndash;<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_margin="@dimen/text_margin" android:text="@string/large_text" />&ndash;&gt;-->
 
-    </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_layout_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
