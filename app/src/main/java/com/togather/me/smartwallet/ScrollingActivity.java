@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.content.Context;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,10 @@ import android.view.View.OnClickListener;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
-
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import java.util.Set;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -40,9 +45,14 @@ public class ScrollingActivity extends AppCompatActivity {
     private Button onBtn;
     private Button offBtn;
     private TextView text;
+    private Button findBtn;
+    private Button listBtn;
+
+    private Set<BluetoothDevice> pairedDevices;
+    private ListView myListView;
+    private ArrayAdapter<String> BTArrayAdapter;
     private BluetoothAdapter myBluetoothAdapter;
     private static final int REQUEST_ENABLE_BT = 1;
-
 
     protected int getLayoutId() {
         return R.layout.activity_listofitems;
@@ -143,16 +153,24 @@ public class ScrollingActivity extends AppCompatActivity {
 
     protected void initializeBluetooth() {
         System.out.println("reached here");
-        BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         text = (TextView) findViewById(R.id.text);
         onBtn = (Button)findViewById(R.id.turnOn);
         offBtn = (Button)findViewById(R.id.turnOff);
+        listBtn = (Button)findViewById(R.id.paired);
+        findBtn = (Button)findViewById(R.id.search);
+        myListView = (ListView)findViewById(R.id.listView12);
+// create the arrayAdapter that contains the BTDevices, and set it to the ListView
+        BTArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
         if (myBluetoothAdapter == null) {
             System.out.println("reached here2");
             // Device does not support Bluetooth
             onBtn.setEnabled(false);
             offBtn.setEnabled(false);
+            findBtn.setEnabled(false);
+            listBtn.setEnabled(false);
+
             text.setText("Status: not supported");
             Toast.makeText(getApplicationContext(),"Your device does not support Bluetooth",
                     Toast.LENGTH_LONG).show();
@@ -172,6 +190,46 @@ public class ScrollingActivity extends AppCompatActivity {
                     off(v);
                 }
             });
+            listBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list(v);
+                }
+            });
+            findBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    find(v);
+                }
+            });
+
+
+            myListView.setAdapter(BTArrayAdapter);
+        }
+    }
+
+    public void list(View view){
+        // get paired devices
+        pairedDevices = myBluetoothAdapter.getBondedDevices();
+
+        // put it's one to the adapter
+        for(BluetoothDevice device : pairedDevices)
+            BTArrayAdapter.add(device.getName()+ "\n" + device.getAddress());
+
+        Toast.makeText(getApplicationContext(),"Show Paired Devices",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void find(View view) {
+        if (myBluetoothAdapter.isDiscovering()) {
+            // the button is pressed when it discovers, so cancel the discovery
+            myBluetoothAdapter.cancelDiscovery();
+        }
+        else {
+            BTArrayAdapter.clear();
+            myBluetoothAdapter.startDiscovery();
+
+            registerReceiver(bReceiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
         }
     }
 
@@ -226,5 +284,25 @@ public class ScrollingActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    final BroadcastReceiver bReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            // When discovery finds a device
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                // Get the BluetoothDevice object from the Intent
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                // add the name and the MAC address of the object to the arrayAdapter
+                BTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+                BTArrayAdapter.notifyDataSetChanged();
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(bReceiver);
     }
 }
