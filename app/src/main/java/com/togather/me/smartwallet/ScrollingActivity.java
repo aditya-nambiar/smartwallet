@@ -17,12 +17,31 @@ import android.bluetooth.BluetoothAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+
 
 public class ScrollingActivity extends AppCompatActivity {
 
     private RecyclerView busRidesView;
     private Adapter mAdapter;
     private List<CashFlow> cashFlowList = new ArrayList<>();
+
+    private Button onBtn;
+    private Button offBtn;
+    private TextView text;
+    private BluetoothAdapter myBluetoothAdapter;
+    private static final int REQUEST_ENABLE_BT = 1;
+
 
     protected int getLayoutId() {
         return R.layout.activity_listofitems;
@@ -81,7 +100,7 @@ public class ScrollingActivity extends AppCompatActivity {
         mAdapter = new Adapter(this, cashFlowList);
         busRidesView.setItemAnimator(new DefaultItemAnimator());
         busRidesView.setAdapter(mAdapter);
-        System.out.println("InitRunnin");
+        System.out.println("InitRunning");
     }
 
 
@@ -107,12 +126,66 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
     protected void initializeBluetooth() {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBluetoothAdapter == null) {
+        BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        text = (TextView) findViewById(R.id.text);
+        onBtn = (Button)findViewById(R.id.turnOn);
+        offBtn = (Button)findViewById(R.id.turnOff);
+
+        if (myBluetoothAdapter == null) {
             // Device does not support Bluetooth
+            onBtn.setEnabled(false);
+            offBtn.setEnabled(false);
+            text.setText("Status: not supported");
+            Toast.makeText(getApplicationContext(),"Your device does not support Bluetooth",
+                    Toast.LENGTH_LONG).show();
             return;
         }
+        else {
+            onBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    on(v);
+                }
+            });
+            offBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    off(v);
+                }
+            });
+        }
+    }
 
+    public void on(View view){
+        if (!myBluetoothAdapter.isEnabled()) {
+            Intent turnOnIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(turnOnIntent, REQUEST_ENABLE_BT);
+
+            Toast.makeText(getApplicationContext(),"Bluetooth turned on" ,
+                    Toast.LENGTH_LONG).show();
+        } else{
+            Toast.makeText(getApplicationContext(),"Bluetooth is already on",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void off(View view){
+        myBluetoothAdapter.disable();
+        text.setText("Status: Disconnected");
+
+        Toast.makeText(getApplicationContext(),"Bluetooth turned off",
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_ENABLE_BT){
+            if(myBluetoothAdapter.isEnabled()) {
+                text.setText("Status: Enabled");
+            } else {
+                text.setText("Status: Disabled");
+            }
+        }
     }
 
     @Override
