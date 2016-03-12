@@ -52,7 +52,6 @@ public class ScrollingActivity extends AppCompatActivity {
     private Button findBtn;
     private Button listBtn;
 
-    private Edit2 edit_dialog2;
 
 
     private Set<BluetoothDevice> pairedDevices;
@@ -227,18 +226,6 @@ public class ScrollingActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
 
-        edit_dialog2 = new Edit2(getApplicationContext());
-        edit_dialog2.setCancelable(false);
-        edit_dialog2.setCanceledOnTouchOutside(false);
-        edit_dialog2.show();
-        Window window = edit_dialog2.getWindow();
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        WindowManager wm = (WindowManager)getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        display.getMetrics(displaymetrics);
-        int height = (int) (displaymetrics.heightPixels * 0.8);
-
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, height);
 
     }
 

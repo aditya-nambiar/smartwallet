@@ -52,13 +52,19 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/Text" />
+    <ListView
+        android:id="@+id/listView12"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp" >
 
+    </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30dp" >
+
 
         <Button
             android:id="@+id/turnOn"
