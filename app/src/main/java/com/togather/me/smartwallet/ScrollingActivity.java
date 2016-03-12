@@ -126,12 +126,14 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
     protected void initializeBluetooth() {
+        System.out.println("reached here");
         BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         text = (TextView) findViewById(R.id.text);
         onBtn = (Button)findViewById(R.id.turnOn);
         offBtn = (Button)findViewById(R.id.turnOff);
 
         if (myBluetoothAdapter == null) {
+            System.out.println("reached here2");
             // Device does not support Bluetooth
             onBtn.setEnabled(false);
             offBtn.setEnabled(false);
@@ -141,6 +143,7 @@ public class ScrollingActivity extends AppCompatActivity {
             return;
         }
         else {
+            System.out.println("reached here3");
             onBtn.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -169,7 +172,7 @@ public class ScrollingActivity extends AppCompatActivity {
         }
     }
 
-    public void off(View view){
+     public void off(View view){
         myBluetoothAdapter.disable();
         text.setText("Status: Disconnected");
 
