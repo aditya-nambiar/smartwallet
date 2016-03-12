@@ -10,4 +10,7 @@ public class CashFlow {
     String ampm;
     String desp;
     int amt;
+    double latitude;
+    double longitude;
+
 }

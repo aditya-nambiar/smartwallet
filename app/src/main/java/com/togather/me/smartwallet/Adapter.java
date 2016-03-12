@@ -1,6 +1,7 @@
 package com.togather.me.smartwallet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -61,8 +62,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
             @Override
             public void onClick(View v) {
                 CashFlow temp = mItems.get(pos);
-                System.out.println("HIIIII");
-                System.out.println(temp.amt);
+                Intent intent = new Intent(mContext, GoogleMapActivity.class);
+                intent.putExtra("longitude", temp.longitude);
+                intent.putExtra("latitude", temp.latitude);
+                intent.putExtra("desp", temp.desp);
+                mContext.startActivity(intent);
             }
         });
     }

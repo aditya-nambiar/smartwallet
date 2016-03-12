@@ -1,29 +1,18 @@
 package com.togather.me.smartwallet;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 
-public class GoogleMapActivity extends FragmentActivity implements
-        OnMarkerClickListener, OnMarkerDragListener {
-    private static final LatLng LOWER_MANHATTAN = new LatLng(40.722543,
-            -73.998585);
-    private static final LatLng TIMES_SQUARE = new LatLng(40.7577, -73.9857);
-    private static final LatLng BROOKLYN_BRIDGE = new LatLng(40.7057, -73.9964);
-    private static final LatLng WALL_STREET = new LatLng(40.7064, -74.0094);
+public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerClickListener, OnMarkerDragListener {
+
+    private static LatLng place;
 
     private static LatLng fromPosition = null;
     private static LatLng toPosition = null;
@@ -44,8 +33,8 @@ public class GoogleMapActivity extends FragmentActivity implements
         if (googleMap == null) {
             googleMap = ((SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map)).getMap();
-            googleMap.setOnMarkerClickListener(this);
-            googleMap.setOnMarkerDragListener(this);
+           // googleMap.setOnMarkerClickListener(this);
+           // googleMap.setOnMarkerDragListener(this);
         }
 
     }
@@ -53,37 +42,40 @@ public class GoogleMapActivity extends FragmentActivity implements
     private void addMarkers() {
         if (googleMap != null) {
 
+           place = new LatLng(getIntent().getDoubleExtra("latitude", 0.0), getIntent().getDoubleExtra("longitude", 0.0));
 
-            // a draggable marker with title and snippet
-            googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
-                    .title("Race Start").snippet("Race Start: 9:00 AM CST")
-                    .draggable(true));
 
-            // marker with custom color
-            googleMap.addMarker(new MarkerOptions()
-                    .position(BROOKLYN_BRIDGE)
-                    .title("First Pit Stop")
-                    .icon(BitmapDescriptorFactory
-                            .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-
-            // marker with opacity
-            googleMap.addMarker(new MarkerOptions().position(LOWER_MANHATTAN)
-                    .title("Second Pit Stop").snippet("Best Time: 6 Secs")
-                    .alpha(0.4f));
+//            // a draggable marker with title and snippet
+//            googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
+//                    .title("Race Start").snippet("Race Start: 9:00 AM CST")
+//                    .draggable(true));
+//
+//            // marker with custom color
+//            googleMap.addMarker(new MarkerOptions()
+//                    .position(BROOKLYN_BRIDGE)
+//                    .title("First Pit Stop")
+//                    .icon(BitmapDescriptorFactory
+//                            .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+//
+//            // marker with opacity
+//            googleMap.addMarker(new MarkerOptions().position(LOWER_MANHATTAN)
+//                    .title("Second Pit Stop").snippet("Best Time: 6 Secs")
+//                    .alpha(0.4f));
 
             // marker using custom image
             googleMap.addMarker(new MarkerOptions()
-                    .position(WALL_STREET)
-                    .title("Wrong Turn!")
+                    .position(place)
+                    .title(getIntent().getStringExtra("desp"))
                     .icon(BitmapDescriptorFactory
                             .fromResource(R.mipmap.map_amarker)));
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                    BROOKLYN_BRIDGE, 13));
+                    place, 13));
 
         }
     }
 
+    /*
     private void addLines() {
         if (googleMap != null) {
             googleMap.addPolyline((new PolylineOptions())
@@ -125,4 +117,6 @@ public class GoogleMapActivity extends FragmentActivity implements
         fromPosition = marker.getPosition();
         Log.d(getClass().getSimpleName(), "Drag start at: " + fromPosition);
     }
+
+    */
 }
