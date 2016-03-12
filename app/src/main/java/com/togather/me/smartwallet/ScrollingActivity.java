@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-
+import android.bluetooth.BluetoothAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -101,6 +101,17 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        initializeBluetooth();
+
+    }
+
+    protected void initializeBluetooth() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+            return;
+        }
 
     }
 

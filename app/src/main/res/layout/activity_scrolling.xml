@@ -46,6 +46,26 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp" >
+
+        <Button
+            android:id="@+id/turnOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/on" />
+
+        <Button
+            android:id="@+id/turnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/off" />
+
+    </LinearLayout>
+
     <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin" app:layout_anchor="@id/app_bar"
