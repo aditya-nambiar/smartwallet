@@ -1,6 +1,7 @@
 package com.togather.me.smartwallet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,8 +24,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     List<CashFlow> mItems;
     LayoutInflater mInflater;
     private Edit edit_dialog;
+    private InterfaceUtils listener;
+    ImageButton button;
 
-    public Adapter(Context context, List<CashFlow> items) {
+    public Adapter(Context context, List<CashFlow> items ) {
         this.mContext = context;
         mItems = new ArrayList<CashFlow>();
         mItems.addAll(items);
@@ -31,6 +35,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         notifyDataSetChanged();
         System.out.println("Adapter");
 
+
+    }
+
+    public void setCustomButtonListner(InterfaceUtils listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -45,11 +54,28 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         holder.time.setText(String.valueOf(temp.time_hours) + ": " + String.valueOf(temp.time_minutes) + temp.ampm);
         holder.desp.setText(temp.desp);
         holder.amt.setText(String.valueOf(temp.amt));
+        ImageButton moneda = (ImageButton)  holder.itemView.findViewById(R.id.locButton);
+        moneda.setTag(position); //For passing the list item index
+        final int pos = position;
+        moneda.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                CashFlow temp = mItems.get(pos);
+                Intent intent = new Intent(mContext, GoogleMapActivity.class);
+                intent.putExtra("longitude", temp.longitude);
+                intent.putExtra("latitude", temp.latitude);
+                intent.putExtra("desp", temp.desp);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public CashFlow getItem(int position) {
         return mItems.get(position);
     }
+
+
 
     @Override
     public int getItemCount() {

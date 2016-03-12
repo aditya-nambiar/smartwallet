@@ -68,7 +68,7 @@
 
                     tools:text="500"/>
 
-                <ImageButton android:id="@+id/myButton"
+                <ImageButton android:id="@+id/locButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

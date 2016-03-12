@@ -17,7 +17,7 @@ import android.widget.TimePicker;
 
 
 public class Edit extends Dialog {
-    private InterfaceUtils.EditDialogListener mOtpDialogListener;
+    //private InterfaceUtils.EditDialogListener mOtpDialogListener;
     Button btnSubmit;
     private TimePicker timePicker1;
     private TextInputLayout desp;

@@ -1,5 +1,6 @@
 package com.togather.me.smartwallet;
 
+import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.bluetooth.BluetoothAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -87,6 +88,21 @@ public class ScrollingActivity extends AppCompatActivity {
             a.time_hours = randInt(1,9);
             a.time_minutes = randInt(11,59);
             a.amt = randInt(1, 1000);
+
+            if( i% 3 == 0){
+                a.latitude = 40.722543;
+                a.longitude = -73.998585;
+            } else if ( i%3 ==1 ){
+                a.latitude = 40.7577;
+                a.longitude = -73.9857;
+            } else if ( i%3 ==2 ){
+                a.latitude = 40.7057;
+                a.longitude = -73.9964;
+            } else if ( i%3 ==3 ){
+                a.latitude = 40.7064;
+                a.longitude = -74.0094;
+            }
+
             cashFlowList.add(a);
         }
 
