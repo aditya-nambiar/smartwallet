@@ -24,6 +24,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     List<CashFlow> mItems;
     LayoutInflater mInflater;
     private Edit edit_dialog;
+//    private Edit2 edit_dialog2;
     private InterfaceUtils listener;
     ImageButton button;
 
