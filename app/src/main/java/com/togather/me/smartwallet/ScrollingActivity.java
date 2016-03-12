@@ -1,7 +1,14 @@
 package com.togather.me.smartwallet;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,49 +16,26 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.content.Context;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Set;
-import java.util.UUID;
-import java.lang.Exception;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.Button;
-import java.io.IOException;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import java.util.Set;
-import android.bluetooth.BluetoothSocket;
+import java.util.UUID;
 
 
 public class ScrollingActivity extends AppCompatActivity {
@@ -280,6 +264,7 @@ public class ScrollingActivity extends AppCompatActivity {
             }
             mmOutputStream = mmSocket.getOutputStream();
             mmInputStream = mmSocket.getInputStream();
+            System.out.println("##D##" + mmSocket);
         } catch(Exception e) {
             System.out.println("scope "+ e);
         }
@@ -322,6 +307,7 @@ public class ScrollingActivity extends AppCompatActivity {
                                     {
                                         public void run()
                                         {
+                                            System.out.println("FUCK YEAHH " +data);
                                             text.setText(data);
                                         }
                                     });
@@ -428,6 +414,6 @@ public class ScrollingActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(bReceiver);
+        //unregisterReceiver(bReceiver);
     }
 }
