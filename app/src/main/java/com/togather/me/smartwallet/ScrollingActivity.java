@@ -19,6 +19,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.content.Context;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Set;
+import java.util.UUID;
+import java.lang.Exception;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Button;
+import java.io.IOException;
 
 
 import java.util.ArrayList;
@@ -39,6 +51,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.Set;
+import android.bluetooth.BluetoothSocket;
+
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -51,8 +65,16 @@ public class ScrollingActivity extends AppCompatActivity {
     private TextView text;
     private Button findBtn;
     private Button listBtn;
+    OutputStream mmOutputStream;
+    InputStream mmInputStream;
+    Thread workerThread;
+    byte[] readBuffer;
+    int readBufferPosition;
+    int counter;
+    volatile boolean stopWorker;
 
-
+    BluetoothSocket mmSocket;
+    BluetoothDevice mmDevice;
 
     private Set<BluetoothDevice> pairedDevices;
     private ListView myListView;
@@ -219,15 +241,109 @@ public class ScrollingActivity extends AppCompatActivity {
         pairedDevices = myBluetoothAdapter.getBondedDevices();
 
         // put it's one to the adapter
-        for(BluetoothDevice device : pairedDevices)
-            BTArrayAdapter.add(device.getName()+ "\n" + device.getAddress());
+        for(BluetoothDevice device : pairedDevices) {
+            if (device.getName().equals("BlueLINK")) {
+                BTArrayAdapter.add("Device found" + "\n" + device.getName() + "\n" + device.getAddress());
+                mmDevice = device;
 
+                System.out.println("device is " + mmDevice);
+                openBT();
+                break;
+            }
+            //BTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+        }
         Toast.makeText(getApplicationContext(),"Show Paired Devices",
                 Toast.LENGTH_SHORT).show();
 
 
-
     }
+
+    void openBT()
+    {
+//        UUID uuid = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66");
+        UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //Standard SerialPortService ID
+        try {
+            if(mmDevice.getBondState()==mmDevice.BOND_BONDED) {
+                System.out.println("i am here");
+                mmSocket = mmDevice.createInsecureRfcommSocketToServiceRecord(uuid);
+            }
+            else {
+                System.out.println("i am not here");
+                mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
+            }
+            try {
+                mmSocket.connect();
+            } catch(IOException e) {
+                System.out.println("entered here");
+                mmSocket = (BluetoothSocket) mmDevice.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(mmDevice,1);
+                mmSocket.connect();
+            }
+            mmOutputStream = mmSocket.getOutputStream();
+            mmInputStream = mmSocket.getInputStream();
+        } catch(Exception e) {
+            System.out.println("scope "+ e);
+        }
+        beginListenForData();
+        text.setText("Bluetooth Opened");
+    }
+
+    void beginListenForData()
+    {
+        final Handler handler = new Handler();
+        final byte delimiter = 10; //This is the ASCII code for a newline character
+
+        stopWorker = false;
+        readBufferPosition = 0;
+        readBuffer = new byte[1024];
+        workerThread = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                while(!Thread.currentThread().isInterrupted() && !stopWorker)
+                {
+                    try
+                    {
+                        int bytesAvailable = mmInputStream.available();
+                        if(bytesAvailable > 0)
+                        {
+                            byte[] packetBytes = new byte[bytesAvailable];
+                            mmInputStream.read(packetBytes);
+                            for(int i=0;i<bytesAvailable;i++)
+                            {
+                                byte b = packetBytes[i];
+                                if(b == delimiter)
+                                {
+                                    byte[] encodedBytes = new byte[readBufferPosition];
+                                    System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
+                                    final String data = new String(encodedBytes, "US-ASCII");
+                                    readBufferPosition = 0;
+
+                                    handler.post(new Runnable()
+                                    {
+                                        public void run()
+                                        {
+                                            text.setText(data);
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    readBuffer[readBufferPosition++] = b;
+                                }
+                            }
+                        }
+                    }
+                    catch (IOException ex)
+                    {
+                        stopWorker = true;
+                    }
+                }
+            }
+        });
+
+        workerThread.start();
+    }
+
 
     public void find(View view) {
         if (myBluetoothAdapter.isDiscovering()) {
