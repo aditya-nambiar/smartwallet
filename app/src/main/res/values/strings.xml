@@ -95,4 +95,25 @@
     <string name="off">Turn Off</string>
     <string name="List">List</string>
     <string name="Find">Search</string>
+
+        <string name="Showlist">List of paired Bluetooth devices:\n
+        (If your device not found please pair it first)</string>
+    <string name="Select">Select</string>
+    <string name="ShowDevices">Show paired devices</string>
+    <string name="exit">Exit</string>
+    <string name="title_activity_control">Control</string>
+    <string name="control">Use the Buttons to control the devices!</string>
+    <string name="led">LED ON/OFF</string>
+    <string name="switchOnBT">Please switch on bluetooth and restart the app!</string>
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirmationExit">Are you sure you want to exit?</string>
+    <string name="about_me">About Me</string>
+    <string name="credits">App created by:\nSidhin S Thomas,\nRIT Kottayam\nContact: <a>sidhin.thoams@gmail.com</a></string>
+    <string name="ScanForDevices">Scan For devices</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="title_activity_bt_scan">btScan</string>
+
+    <string name="hello_world">Hello world!</string>
+
 </resources>

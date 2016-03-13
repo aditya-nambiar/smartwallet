@@ -90,6 +90,15 @@
             android:layout_height="wrap_content"
             android:text="@string/Find" />
 
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scan"
+            android:id="@+id/toggleButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false" />
+
 
     </LinearLayout>
 
