@@ -47,17 +47,17 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/textconn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/Text" />
-    <ListView
-        android:id="@+id/listView12"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp" >
+    <!--<ListView-->
+        <!--android:id="@+id/listView12"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="200dp" >-->
 
-    </ListView>
+    <!--</ListView>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,38 +66,38 @@
         android:layout_marginTop="30dp" >
 
 
-        <Button
-            android:id="@+id/turnOn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/on" />
+        <!--<Button-->
+            <!--android:id="@+id/turnOn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/on" />-->
 
-        <Button
-            android:id="@+id/turnOff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/off" />
+        <!--<Button-->
+            <!--android:id="@+id/turnOff"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/off" />-->
 
-        <Button
-            android:id="@+id/paired"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/List" />
+        <!--<Button-->
+            <!--android:id="@+id/paired"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/List" />-->
 
-        <Button
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Find" />
+        <!--<Button-->
+            <!--android:id="@+id/search"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/Find" />-->
 
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Scan"
-            android:id="@+id/toggleButton"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:checked="false" />
+        <!--<ToggleButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Scan"-->
+            <!--android:id="@+id/toggleButton"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:checked="false" />-->
 
 
     </LinearLayout>

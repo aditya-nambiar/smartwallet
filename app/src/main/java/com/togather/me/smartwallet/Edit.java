@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.io.IOException;
+
 
 public class Edit extends Dialog {
     //private InterfaceUtils.EditDialogListener mOtpDialogListener;
@@ -27,6 +29,7 @@ public class Edit extends Dialog {
     private TextView time_txt;
     private CashFlow cash;
     private Adapter adapter;
+    private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class Edit extends Dialog {
         if ( cash.ampm.equals("PM") )
         timePicker1.setCurrentHour(cash.time_hours + 12 );
         else
-            timePicker1.setCurrentHour(cash.time_hours );
+            timePicker1.setCurrentHour(cash.time_hours);
 
         timePicker1.setCurrentMinute(cash.time_minutes);
 
@@ -77,6 +80,12 @@ public class Edit extends Dialog {
 
                 cash.time_hours = hour;
                 cash.time_minutes = min;
+                ScrollingActivity.cashFlowList.set(position, cash);
+                try {
+                    ScrollingActivity.refresh_file();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 adapter.notifyDataSetChanged();
                 dismiss();
             }
@@ -93,8 +102,10 @@ public class Edit extends Dialog {
         super(context);
     }
 
-    public Edit(Context context, int theme) {
-        super(context, theme);
+    public Edit(Context context, int pos) {
+        super(context);
+        position = pos;
+
     }
 
     protected Edit(Context context, boolean cancelable, OnCancelListener cancelListener) {

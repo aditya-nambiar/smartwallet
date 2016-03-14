@@ -39,9 +39,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
 
     }
 
-    public void setCustomButtonListner(InterfaceUtils listener) {
-        this.listener = listener;
-    }
+//    public void setItems(List<CashFlow> items) {
+//        mItems.clear();
+//        mItems.addAll(items);
+//
+//        this.notifyDataSetChanged();
+//    }
+
+
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -66,7 +71,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
                 Intent intent = new Intent(mContext, GoogleMapActivity.class);
                 intent.putExtra("longitude", temp.longitude);
                 intent.putExtra("latitude", temp.latitude);
-                intent.putExtra("desp", temp.desp);
                 mContext.startActivity(intent);
             }
         });
@@ -103,7 +107,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         public void onClick(View v) {
 
             CashFlow item = getItem(getAdapterPosition());
-            edit_dialog = new Edit(mContext);
+            edit_dialog = new Edit(mContext,getAdapterPosition() );
             edit_dialog.setCancelable(false);
             edit_dialog.setCanceledOnTouchOutside(false);
             edit_dialog.setCashFlow(item, Adapter.this);

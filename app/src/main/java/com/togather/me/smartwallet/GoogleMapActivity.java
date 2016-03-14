@@ -41,8 +41,10 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
 
     private void addMarkers() {
         if (googleMap != null) {
+            System.out.println(getIntent().getDoubleExtra("latitude", 0.0));
+            System.out.println(getIntent().getDoubleExtra("longitude", 0.0));
 
-           place = new LatLng(getIntent().getDoubleExtra("latitude", 0.0), getIntent().getDoubleExtra("longitude", 0.0));
+            place = new LatLng(getIntent().getDoubleExtra("latitude", 0.0), getIntent().getDoubleExtra("longitude", 0.0));
 
 
 //            // a draggable marker with title and snippet
