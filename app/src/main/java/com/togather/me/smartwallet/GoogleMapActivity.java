@@ -30,22 +30,26 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
 
     private void addGoogleMap() {
         // check if we have got the googleMap already
+        System.out.println("GoogleMap1");
         if (googleMap == null) {
             googleMap = ((SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map)).getMap();
-           // googleMap.setOnMarkerClickListener(this);
-           // googleMap.setOnMarkerDragListener(this);
+            // googleMap.setOnMarkerClickListener(this);
+            // googleMap.setOnMarkerDragListener(this);
         }
 
     }
 
     private void addMarkers() {
+        System.out.println("GoogleMap2");
+
         if (googleMap != null) {
             System.out.println(getIntent().getDoubleExtra("latitude", 0.0));
             System.out.println(getIntent().getDoubleExtra("longitude", 0.0));
 
             place = new LatLng(getIntent().getDoubleExtra("latitude", 0.0), getIntent().getDoubleExtra("longitude", 0.0));
 
+            System.out.println("GoogleMap3");
 
 //            // a draggable marker with title and snippet
 //            googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
@@ -71,8 +75,12 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
                     .icon(BitmapDescriptorFactory
                             .fromResource(R.mipmap.map_amarker)));
 
+            System.out.println("GoogleMap4");
+
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     place, 13));
+            System.out.println("GoogleMap5");
+
 
         }
     }

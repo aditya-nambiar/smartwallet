@@ -1,5 +1,6 @@
 package com.togather.me.smartwallet;
 
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ParcelUuid;
@@ -25,9 +27,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -41,14 +43,14 @@ import com.google.android.gms.location.LocationServices;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,7 +79,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
     private Button onBtn;
     private Button offBtn;
-    private TextView text;
+    private ImageView conn_img;
     private Button findBtn;
     private Button listBtn;
     OutputStream mmOutputStream;
@@ -109,7 +111,10 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     private BtTransmission btTransmit;
     private Boolean sendSuccess ;
     private Boolean readSuccess ;
-    public static File cashlogs;
+
+    public static String filename = "cashlogs8.txt";
+
+
 
     protected int getLayoutId() {
         return R.layout.activity_listofitems;
@@ -151,10 +156,58 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     protected void initViews() throws FileNotFoundException {
 
         busRidesView = (RecyclerView) findViewById(R.id.rv_activity_listofitems);
 
+
+        try {
+            FileInputStream cashlogs_input = openFileInput(filename);
+            System.out.println("###File EXISTs");
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(cashlogs_input))) {
+                String line;
+                cashFlowList.clear();
+                while ((line = br.readLine()) != null) {
+                    System.out.println("###"+line);
+
+                    String[] parts = line.split("#");
+                /*
+                     int time_hours;
+                        int time_minutes;
+                        String ampm;
+                        String desp;
+                        int amt;
+                        double latitude;
+                        double longitude;
+
+                 */
+
+                    String part1 = parts[0]; // 004
+                    String part2 = parts[1]; // 034556
+                    String part3 = parts[2]; // 004
+                    String part4 = parts[3]; // 034556 String part1 = parts[0]; // 004
+                    String part5 = parts[4]; // 034556
+                    String part6 = parts[5]; // 034556 String part1 = parts[0]; // 004
+                    String part7 = parts[6]; // 034556
+                    CashFlow a = new CashFlow();
+                    a.time_hours = Integer.parseInt(part1);
+                    a.time_minutes = Integer.parseInt(part2);
+                    a.ampm = part3;
+                    a.desp = part4;
+                    a.amt = Integer.parseInt(part5);
+                    a.latitude = Double.parseDouble(part6);
+                    a.longitude = Double.parseDouble(part7);
+                    cashFlowList.add(a);
+
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("###Adding Rahul");
             for (int i = 0; i < 1; i++) {
                 CashFlow a = new CashFlow();
                 a.ampm = "PM";
@@ -178,55 +231,10 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                 }
 
                 cashFlowList.add(a);
+                refresh_file();
             }
-            if (!cashlogs.exists()) {
-                try {
-                    cashlogs.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        try (BufferedReader br = new BufferedReader(new FileReader(cashlogs))) {
-            String line;
-            try {
-                while (false && (line = br.readLine()) != null) {
-                    String[] parts = line.split("#");
-                    /*
-                         int time_hours;
-                            int time_minutes;
-                            String ampm;
-                            String desp;
-                            int amt;
-                            double latitude;
-                            double longitude;
-
-                     */
-
-                        String part1 = parts[0]; // 004
-                        String part2 = parts[1]; // 034556
-                    String part3 = parts[0]; // 004
-                    String part4 = parts[1]; // 034556 String part1 = parts[0]; // 004
-                    String part5 = parts[1]; // 034556
-                    String part6 = parts[1]; // 034556 String part1 = parts[0]; // 004
-                    String part7 = parts[1]; // 034556
-                    CashFlow a = new CashFlow();
-                    a.time_hours = Integer.parseInt(part1);
-                    a.time_minutes = Integer.parseInt(part2);
-                    a.ampm = part3;
-                    a.desp = part4;
-                    a.amt = Integer.parseInt(part5);
-                    a.latitude = Double.parseDouble(part6);
-                    a.longitude = Double.parseDouble(part7);
-                    cashFlowList.add(a);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
 
         initRunningRoutesList();
     }
@@ -268,19 +276,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String filename = "cashlogs.txt";
-        text = (TextView) findViewById(R.id.textconn);
-        cashlogs = new File(getApplicationContext().getFilesDir(), filename);;
-        if(!cashlogs.exists())
-        {
-            try {
-                cashlogs.createNewFile();
-                System.out.println("File Created ######");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            // write code for saving data to the file
-        }
+        conn_img = (ImageView) findViewById(R.id.connection_status);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 // The next two lines tell the new client that “this” current class will handle connection stuff
@@ -407,8 +403,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                 ScrollingActivity.this.runOnUiThread(new Runnable() {
 
                     public void run() {
-                        text.setText("Status :- Established connection");
-
+                        conn_img.setImageResource(R.drawable.ic_bluetooth_connected_black_24dp);
                     }
                 });
 
@@ -417,7 +412,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                 ScrollingActivity.this.runOnUiThread(new Runnable() {
 
                     public void run() {
-                        text.setText("Status :- Could not establish connection");
+                        conn_img.setImageResource(R.drawable.ic_bluetooth_disabled_black_24dp);
 
                     }
                 });
@@ -493,7 +488,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
             if(isConnected=true) {
                 System.out.println("listening starting");
                 String data = "";
-                while (!Thread.currentThread().isInterrupted() && !stopWorker) {
+                while ( !Thread.currentThread().isInterrupted() && !stopWorker) {
                     try {
                         int bytesAvailable = btTransmit.inStream.available();
                         if (bytesAvailable > 0) {
@@ -548,15 +543,19 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
                                     cashFlowList.add(temp);
                                     refresh_file();
-                                   // mAdapter.setItems(cashFlowList);
+                                    System.out.println("556");
+
+                                    // mAdapter.setItems(cashFlowList);
                                     mAdapter.mItems.add(temp);
+                                    System.out.println("559");
+
                                     ScrollingActivity.this.runOnUiThread(new Runnable() {
 
                                         public void run() {
                                             mAdapter.notifyDataSetChanged();
                                         }
                                     });
-
+                                    System.out.println("564");
 
                                     // text.setText(data);
                                     //    }
@@ -581,40 +580,56 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
     }
 
-    public static void refresh_file() throws IOException {
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter(cashlogs);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        writer.print("");
-        writer.close();
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(cashlogs);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+    public  void refresh_file() {
+        File dir = getFilesDir();
+        File file = new File(dir, filename);
+        boolean deleted = file.delete();
+        System.out.println("Dlete files " + deleted);
+        FileOutputStream cashlogs_output = null;
+        try {
+            cashlogs_output = openFileOutput(filename, Context.MODE_APPEND);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(cashlogs_output));
+
+        System.out.println("Refreshing File");
 
         for (int i = 0; i < cashFlowList.size(); i++) {
-            /*
-             int time_hours;
-    int time_minutes;
-    String ampm;
-    String desp;
-    int amt;
-    double latitude;
-    double longitude;
-             */
+
             CashFlow temp = cashFlowList.get(i);;
-            bw.write(temp.time_hours + "#"+ temp.time_minutes + "#" + temp.ampm + "#" +temp.desp+ "#" + temp.amt+ "#"+ temp.latitude +"#"+ temp.longitude);
-            bw.newLine();
+            try {
+                bw.write(temp.time_hours + "#"+ temp.time_minutes + "#" + temp.ampm + "#" +temp.desp+ "#" + temp.amt+ "#"+ temp.latitude +"#"+ temp.longitude);
+                bw.newLine();
+                System.out.println("##WRITNG TO FLE");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        bw.close();
+        try {
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileInputStream cashlogs_input = null;
+        try {
+            cashlogs_input = openFileInput(filename);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(cashlogs_input));
+            String line;
+        try {
+            while ((line = br.readLine()) != null) {
+                System.out.println("###" + line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -643,9 +658,10 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_ENABLE_BT){
             if(myBluetoothAdapter.isEnabled()) {
-                text.setText("Status: Enabled");
+                conn_img.setImageResource(R.drawable.ic_bluetooth_connected_black_24dp);
+
             } else {
-                text.setText("Status: Disabled");
+                conn_img.setImageResource(R.drawable.ic_bluetooth_disabled_black_24dp);
             }
         }
     }

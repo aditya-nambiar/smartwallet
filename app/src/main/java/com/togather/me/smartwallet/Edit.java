@@ -4,8 +4,10 @@ package com.togather.me.smartwallet;
  * Created by aditya on 3/12/16.
  */
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
@@ -14,9 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
-import java.io.IOException;
-
 
 public class Edit extends Dialog {
     //private InterfaceUtils.EditDialogListener mOtpDialogListener;
@@ -30,6 +29,7 @@ public class Edit extends Dialog {
     private CashFlow cash;
     private Adapter adapter;
     private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,17 +81,23 @@ public class Edit extends Dialog {
                 cash.time_hours = hour;
                 cash.time_minutes = min;
                 ScrollingActivity.cashFlowList.set(position, cash);
-                try {
-                    ScrollingActivity.refresh_file();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                getActivity().refresh_file();
                 adapter.notifyDataSetChanged();
                 dismiss();
             }
         });
     }
 
+    private ScrollingActivity getActivity() {
+        Context context = getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (ScrollingActivity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
+    }
 
     public void setCashFlow(CashFlow cash, Adapter adapter){
         this.cash = cash;
@@ -105,12 +111,18 @@ public class Edit extends Dialog {
     public Edit(Context context, int pos) {
         super(context);
         position = pos;
+        Activity owner = (context instanceof Activity) ? (Activity)context : null;
+        if (owner != null) {
+            // owner activity is defined here
+        }
 
     }
 
     protected Edit(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
+
+
 
 
 }
