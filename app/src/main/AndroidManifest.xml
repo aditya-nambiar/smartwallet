@@ -53,8 +53,9 @@
             android:theme="@style/Theme.AppCompat.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.bluedemons.bluecontrol.BTdeviceSelect" />
+                android:value="org.bluedemons.bluecontrol.BTdeviceSeleneways ct" />
         </activity>
+
 
         <activity
             android:name=".ScrollingActivity"

@@ -59,6 +59,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
+import android.os.AsyncTask;
 
 
 public class ScrollingActivity extends AppCompatActivity implements ConnectionCallbacks,
@@ -112,8 +113,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     private Boolean sendSuccess ;
     private Boolean readSuccess ;
 
-    public static String filename = "cashlogs8.txt";
-
+    public static String filename = "cashlogs9.txt";
 
 
     protected int getLayoutId() {
@@ -270,6 +270,23 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     }
 
 
+    class MyAsyncTask extends AsyncTask {
+        @Override
+        protected Integer doInBackground(Object... params) {
+            Intent Control = getIntent();
+        btAddress = Control.getStringExtra(BTdeviceSelect.EXTRA_DEVICE_ADDRESS);
+        adapter = BluetoothAdapter.getDefaultAdapter();
+        btDevice = adapter.getRemoteDevice(btAddress);
+        ParcelUuid[] uuid = btDevice.getUuids();
+        id = UUID.fromString(uuid[0].toString());
+        System.out.println("id is " + id);
+            BtConnectThread connect = new BtConnectThread();
+            System.out.println("connect is " + connect);
+            connect.start();
+            return 1;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -299,19 +316,21 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                         .setAction("Action", null).show();
             }
         });
-
-        Intent Control = getIntent();
-        btAddress = Control.getStringExtra(BTdeviceSelect.EXTRA_DEVICE_ADDRESS);
-        adapter = BluetoothAdapter.getDefaultAdapter();
-        btDevice = adapter.getRemoteDevice(btAddress);
-        ParcelUuid[] uuid = btDevice.getUuids();
-        id = UUID.fromString(uuid[0].toString());
-        System.out.println("id is " + id);
-        BtConnectThread connect = new BtConnectThread();
-        System.out.println("connect is " + connect);
-        connect.start();
-
-        handler = new Handler();
+        //Intent serviceIntent = new Intent(this, BluetoothService.class);
+        //startService(serviceIntent);
+         new MyAsyncTask().execute();
+//        Intent Control = getIntent();
+//        btAddress = Control.getStringExtra(BTdeviceSelect.EXTRA_DEVICE_ADDRESS);
+//        adapter = BluetoothAdapter.getDefaultAdapter();
+//        btDevice = adapter.getRemoteDevice(btAddress);
+//        ParcelUuid[] uuid = btDevice.getUuids();
+//        id = UUID.fromString(uuid[0].toString());
+//        System.out.println("id is " + id);
+//        BtConnectThread connect = new BtConnectThread();
+//        System.out.println("connect is " + connect);
+//        connect.start();
+//
+//        handler = new Handler();
 
     }
 
@@ -408,7 +427,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                 });
 
             }
-            catch (IOException e) {
+            catch (Exception e) {
                 ScrollingActivity.this.runOnUiThread(new Runnable() {
 
                     public void run() {
@@ -417,13 +436,10 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                     }
                 });
 
-                System.out.println("loc 1" + e);
-                System.out.println("loc 1:"+btTransmit.inStream);
-                System.out.println("loc 1:"+btTransmit.outStream);
-//                goBack();
+
             }
             if(isConnected=true) {
-//                System.out.println("listening starting");
+                System.out.println("listening starting");
                 return;
             }
         }
@@ -557,6 +573,13 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                                     });
                                     System.out.println("564");
 
+                                    ScrollingActivity.this.runOnUiThread(new Runnable() {
+
+                                        public void run() {
+                                            busRidesView.scrollToPosition(cashFlowList.size()-1);
+
+                                        }
+                                    });
                                     // text.setText(data);
                                     //    }
                                     //  });
