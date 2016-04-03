@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.togather.me.smartwallet"
+    android:versionCode="2"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <permission
+        android:name="com.javapapers.android.maps.marker.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.javapapers.android.maps.marker.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.togather.me.smartwallet.BTdeviceSelect"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.togather.me.smartwallet.Control"
+            android:label="@string/title_activity_control"
+            android:parentActivityName="com.togather.me.smartwallet.BTdeviceSelect" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.bluedemons.bluecontrol.BTdeviceSelect" />
+        </activity>
+        <activity
+            android:name="com.togather.me.smartwallet.btScan"
+            android:label="@string/title_activity_bt_scan"
+            android:parentActivityName="com.togather.me.smartwallet.BTdeviceSelect"
+            android:theme="@style/Theme.AppCompat.Dialog" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.bluedemons.bluecontrol.BTdeviceSelect" />
+        </activity>
+        <activity
+            android:name="com.togather.me.smartwallet.ScrollingActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name="com.togather.me.smartwallet.GoogleMapActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v3.API_KEY"
+            android:value="AIzaSyCsr8fVJvPXnowtDnGoPMGjTXHL7i0UB8o" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBHqODZMdeGHAco3zDXWuFTnaADASrI7RE" />
+ //AIzaSyCsr8fVJvPXnowtDnGoPMGjTXHL7i0UB8o
+    </application>
+
+</manifest>

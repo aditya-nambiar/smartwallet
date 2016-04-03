@@ -1,16 +1,23 @@
 package com.togather.me.smartwallet;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.view.Window;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerClickListener, OnMarkerDragListener {
+public class GoogleMapActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener {
 
     private static LatLng place;
 
@@ -22,10 +29,19 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setBackgroundDrawable(new ColorDrawable(0));
         setContentView(R.layout.activity_map);
-        addGoogleMap();
+//        this.rootView=findViewById(R.id.map);
+
+        FragmentManager myFragmentManager = getSupportFragmentManager();
+        SupportMapFragment mySupportMapFragment = (SupportMapFragment)myFragmentManager.findFragmentById(R.id.map);
+        googleMap = mySupportMapFragment.getMap();
+        googleMap.setOnMarkerClickListener(this);
+        googleMap.setOnMarkerDragListener(this);
+        // addGoogleMap();
         // addLines();
-        addMarkers();
+         addMarkers();
     }
 
     private void addGoogleMap() {
@@ -33,8 +49,8 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
         if (googleMap == null) {
             googleMap = ((SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map)).getMap();
-           // googleMap.setOnMarkerClickListener(this);
-           // googleMap.setOnMarkerDragListener(this);
+            googleMap.setOnMarkerClickListener(this);
+            googleMap.setOnMarkerDragListener(this);
         }
 
     }
@@ -77,25 +93,24 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
         }
     }
 
-    /*
+
     private void addLines() {
         if (googleMap != null) {
             googleMap.addPolyline((new PolylineOptions())
-                    .add(TIMES_SQUARE, BROOKLYN_BRIDGE, LOWER_MANHATTAN,
-                            TIMES_SQUARE).width(5).color(Color.BLUE)
+                    .width(5).color(Color.BLUE)
                     .geodesic(true));
             // move camera to zoom on map
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                    LOWER_MANHATTAN, 13));
+            //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    //LOWER_MANHATTAN, 13));
         }
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
         Log.i("GoogleMapActivity", "onMarkerClick");
-        Toast.makeText(getApplicationContext(),
+        /*Toast.makeText(getApplicationContext(),
                 "Marker Clicked: " + marker.getTitle(), Toast.LENGTH_LONG)
-                .show();
+                .show();*/
         return false;
     }
 
@@ -107,11 +122,11 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
     @Override
     public void onMarkerDragEnd(Marker marker) {
         toPosition = marker.getPosition();
-        Toast.makeText(
+    /*    Toast.makeText(
                 getApplicationContext(),
                 "Marker " + marker.getTitle() + " dragged from " + fromPosition
                         + " to " + toPosition, Toast.LENGTH_LONG).show();
-
+    */
     }
 
     @Override
@@ -120,5 +135,5 @@ public class GoogleMapActivity extends FragmentActivity { //implements OnMarkerC
         Log.d(getClass().getSimpleName(), "Drag start at: " + fromPosition);
     }
 
-    */
+
 }
