@@ -33,6 +33,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                     Toast.LENGTH_LONG).show();
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(2000);
+            ScrollingActivity.text.setText("Status :- Connection Lost!");
         }
     }
 

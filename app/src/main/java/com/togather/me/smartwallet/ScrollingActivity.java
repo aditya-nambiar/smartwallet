@@ -137,7 +137,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     }
 
 
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -490,30 +489,28 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
             stopWorker = false;
             readBufferPosition = 0;
             readBuffer = new byte[1024];
+            boolean br = false;
             if(isConnected=true) {
                 System.out.println("listening starting");
                 String data = "";
+                String time = "";
+                byte bwas = 'a';
                 while (!Thread.currentThread().isInterrupted() && !stopWorker) {
                     try {
                         int bytesAvailable = btTransmit.inStream.available();
                         if (bytesAvailable > 0) {
                             byte[] packetBytes = new byte[bytesAvailable];
                             btTransmit.inStream.read(packetBytes);
+                            System.out.println("Bytes available:" + bytesAvailable);
+
                             for (int i = 0; i < bytesAvailable; i++) {
                                 byte b = packetBytes[i];
                                 System.out.println("received " + b + " " + (char)b);
-                                if(!(b == 'z' || b == 'y'))
-                                data = data + (char)b;
 
-                                if (b == 'z'|| b =='y') {
-                                    System.out.println("###################################");
+                                if(b=='l') {
+                                    System.out.println("Data: " + data + " Time: " + time);
+                                    br = false;
 
-
-//                                    handler.post(new Runnable() {
-//                                        public void run() {
-
-                                    System.out.println(data);
-//                                     data  = data.substring(2);
                                     String temp12 = "";
                                     for(int k=0; k< data.length(); k++){
                                         if( data.charAt(k) >= '0' && data.charAt(k) <= '9')
@@ -521,21 +518,29 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                                     }
                                     int amt = Integer.parseInt(temp12);
 
-                                    data = "";
+
 
                                     CashFlow temp = new CashFlow();
                                     temp.amt = amt;
-                                    if ( b == 'z')
-                                        temp.desp = "Given to XXX";
-                                    if ( b == 'y')
-                                        temp.desp = "Taken from XXX";
+                                    if ( bwas == 'z')
+                                        temp.desp = "Given";
+                                    if ( bwas == 'y')
+                                        temp.desp = "Taken";
+
                                     DateFormat df1 = new SimpleDateFormat("HH");
                                     DateFormat df2 = new SimpleDateFormat("mm");
+                                    DateFormat df3 = new SimpleDateFormat("yyyy");
+                                    DateFormat df4 = new SimpleDateFormat("MM");
+                                    DateFormat df5 = new SimpleDateFormat("dd");
 
-                                    Date dateobj = new Date();
+                                    Date dateobj = new Date(Long.parseLong(time)*1000);
 
                                     temp.time_hours = Integer.parseInt(df1.format(dateobj));
                                     temp.time_minutes = Integer.parseInt(df2.format(dateobj));
+                                    temp.date = Integer.parseInt(df5.format(dateobj));
+                                    temp.month = Integer.parseInt(df4.format(dateobj));
+                                    temp.year = Integer.parseInt(df3.format(dateobj));
+                                    System.out.println("time: " + temp.date + " " + temp.month + " "  + temp.year);
                                     if ( temp.time_hours > 12){
                                         temp.time_hours = temp.time_hours -12;
                                         temp.ampm = "PM";
@@ -548,7 +553,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
                                     cashFlowList.add(temp);
                                     refresh_file();
-                                   // mAdapter.setItems(cashFlowList);
+                                    // mAdapter.setItems(cashFlowList);
                                     mAdapter.mItems.add(temp);
                                     ScrollingActivity.this.runOnUiThread(new Runnable() {
 
@@ -557,13 +562,22 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                                         }
                                     });
 
+                                    data = "";
+                                    time = "";
 
-                                    // text.setText(data);
-                                    //    }
-                                    //  });
-//                                } else {
-//                                    readBuffer[readBufferPosition++] = b;
-//                                }
+                                }
+
+                                else if(!(b == 'z' || b == 'y') && !br)
+                                    data = data + (char)b;
+
+
+
+                                else if(!(b == 'z' || b == 'y') && br)
+                                    time = time + (char)b;
+
+                                else if (b == 'z'|| b =='y') {
+                                    br = true;
+                                    bwas = b;
                                 }
                             }
                         }

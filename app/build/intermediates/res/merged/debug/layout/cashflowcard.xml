@@ -38,6 +38,20 @@
                     tools:text="07:00 AM"/>
 
                 <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_medium"
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+
+                    tools:text="03/04/16"/>
+
+
+                <TextView
                     android:id="@+id/desp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

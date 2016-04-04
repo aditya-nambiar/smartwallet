@@ -58,6 +58,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     public void onBindViewHolder(ItemHolder holder, int position) {
          CashFlow temp = mItems.get(position);
         holder.time.setText(String.valueOf(temp.time_hours) + ": " + String.valueOf(temp.time_minutes) + temp.ampm);
+        holder.date.setText(temp.date + "/"+temp.month+"/"+temp.year);
         holder.desp.setText(temp.desp);
         holder.amt.setText(String.valueOf(temp.amt));
         ImageButton moneda = (ImageButton)  holder.itemView.findViewById(R.id.locButton);
@@ -91,7 +92,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         TextView time;
         TextView desp;
         TextView amt;
-
+        TextView date;
 
 
         public ItemHolder(View itemView) {
@@ -99,7 +100,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
             time = (TextView) itemView.findViewById(R.id.timing);
             desp = (TextView) itemView.findViewById(R.id.desp);
             amt = (TextView) itemView.findViewById(R.id.amt);
-
+            date = (TextView) itemView.findViewById(R.id.date);
             itemView.setOnClickListener(this);
         }
 
