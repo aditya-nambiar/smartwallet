@@ -17,6 +17,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.VIBRATE" >
+    </uses-permission>
+
 
     <application
         android:allowBackup="true"
@@ -72,7 +75,7 @@
             android:label="@string/app_name"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
 
         </activity>
@@ -86,6 +89,15 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBHqODZMdeGHAco3zDXWuFTnaADASrI7RE"/> //AIzaSyCsr8fVJvPXnowtDnGoPMGjTXHL7i0UB8o
+
+        <receiver android:name="MyBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" >
+                </action>
+            </intent-filter>
+
+        </receiver>
+
 
     </application>
 

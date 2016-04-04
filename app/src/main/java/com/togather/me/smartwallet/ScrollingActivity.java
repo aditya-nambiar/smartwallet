@@ -77,7 +77,7 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
     private Button onBtn;
     private Button offBtn;
-    private TextView text;
+    public static TextView text;
     private Button findBtn;
     private Button listBtn;
     OutputStream mmOutputStream;

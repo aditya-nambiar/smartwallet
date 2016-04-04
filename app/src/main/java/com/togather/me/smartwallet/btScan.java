@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
@@ -30,7 +32,19 @@ public class btScan extends ActionBarActivity {
                 if(b!=null) {
                     btArrayList.add(b.getName() + " : " + b.getAddress());
                     btArrayList.notifyDataSetChanged();
+                    Log.e("siddhartha", "i was here" + b.getName());
+                    int  rssi = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MIN_VALUE);
+                    Toast.makeText(getApplicationContext(),"  RSSI: " + rssi + "dBm", Toast.LENGTH_SHORT).show();
+
                 }
+            }
+            else if (BluetoothDevice.ACTION_ACL_DISCONNECT_REQUESTED.equals(result)) {
+                System.out.println("disconnect request");
+                Log.d("siddhartha", "device disconnect request");
+            }
+            else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(result)) {
+                System.out.println("disconnected device");
+                Log.d("siddhartha", "device disconnected");
             }
         }
     };
@@ -45,6 +59,7 @@ public class btScan extends ActionBarActivity {
         ListView scanList = (ListView) findViewById(R.id.scanList);
         scanList.setAdapter(btArrayList);
         ToggleButton scan = (ToggleButton) findViewById(R.id.toggleButton);
+
         scan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);

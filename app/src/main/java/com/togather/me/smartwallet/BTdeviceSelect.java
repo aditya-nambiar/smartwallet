@@ -122,7 +122,7 @@ public class BTdeviceSelect extends ActionBarActivity {
         public void onItemClick(AdapterView p,View v,int i,long id){
             String device = ((TextView)v).getText().toString();
             String deviceAddr = device.substring(device.length()-17);
-            //Toast.makeText(getApplicationContext(),deviceAddr,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),deviceAddr,Toast.LENGTH_LONG).show();
             Intent intent = new Intent(BTdeviceSelect.this,ScrollingActivity.class);
             intent.putExtra(EXTRA_DEVICE_ADDRESS,deviceAddr);
             startActivity(intent);
