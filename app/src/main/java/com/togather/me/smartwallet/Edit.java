@@ -17,18 +17,27 @@ import android.widget.TimePicker;
 
 import java.io.IOException;
 
-
+/*
+*
+* Author List: Aditya Nambiar, Siddharth Dutta
+* Filename: Edit.java
+* Functions: onCreate, setCashFlow
+* Global Variables: nil
+*/
 public class Edit extends Dialog {
-    //private InterfaceUtils.EditDialogListener mOtpDialogListener;
     Button btnSubmit;
+    // Time picker to set the time for the cashflow transaction
     private TimePicker timePicker1;
+    // The description of the cashflow transaction
     private TextInputLayout desp;
+    // The amount involved in the transaction.
     private TextInputLayout amt;
     private TextView amt_txt;
     private TextView desp_txt;
     private TextView time_txt;
     private CashFlow cash;
     private Adapter adapter;
+    // Which position in the list of  cashflow transactions is this Edit Dialog box opened
     private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,14 +101,9 @@ public class Edit extends Dialog {
         });
     }
 
-
     public void setCashFlow(CashFlow cash, Adapter adapter){
         this.cash = cash;
         this.adapter = adapter;
-    }
-
-    public Edit(Context context) {
-        super(context);
     }
 
     public Edit(Context context, int pos) {
@@ -107,10 +111,4 @@ public class Edit extends Dialog {
         position = pos;
 
     }
-
-    protected Edit(Context context, boolean cancelable, OnCancelListener cancelListener) {
-        super(context, cancelable, cancelListener);
-    }
-
-
 }

@@ -1,8 +1,12 @@
 package com.togather.me.smartwallet;
 
-/**
- * Created by aditya on 3/11/16.
- */
+/*
+*
+* Author List: Aditya Nambiar
+* Filename: CashFlow.java
+* Global Variables: nil
+* Description: All the neccesary information to capture a cashflow transaction
+*/
 public class CashFlow {
     int date;
     int month;

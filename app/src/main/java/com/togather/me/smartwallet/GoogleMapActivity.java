@@ -17,10 +17,17 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+/*
+*
+* Author List: Aditya Nambiar, Siddharth Dutta
+* Filename: CashFlow.java
+* Global Variables: nil
+*/
 public class GoogleMapActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener {
 
     private static LatLng place;
 
+    // The l
     private static LatLng fromPosition = null;
     private static LatLng toPosition = null;
 
@@ -32,53 +39,19 @@ public class GoogleMapActivity extends FragmentActivity implements GoogleMap.OnM
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(0));
         setContentView(R.layout.activity_map);
-//        this.rootView=findViewById(R.id.map);
 
         FragmentManager myFragmentManager = getSupportFragmentManager();
         SupportMapFragment mySupportMapFragment = (SupportMapFragment)myFragmentManager.findFragmentById(R.id.map);
         googleMap = mySupportMapFragment.getMap();
         googleMap.setOnMarkerClickListener(this);
         googleMap.setOnMarkerDragListener(this);
-        // addGoogleMap();
-        // addLines();
+
          addMarkers();
-    }
-
-    private void addGoogleMap() {
-        // check if we have got the googleMap already
-        if (googleMap == null) {
-            googleMap = ((SupportMapFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.map)).getMap();
-            googleMap.setOnMarkerClickListener(this);
-            googleMap.setOnMarkerDragListener(this);
-        }
-
     }
 
     private void addMarkers() {
         if (googleMap != null) {
-            System.out.println(getIntent().getDoubleExtra("latitude", 0.0));
-            System.out.println(getIntent().getDoubleExtra("longitude", 0.0));
-
             place = new LatLng(getIntent().getDoubleExtra("latitude", 0.0), getIntent().getDoubleExtra("longitude", 0.0));
-
-
-//            // a draggable marker with title and snippet
-//            googleMap.addMarker(new MarkerOptions().position(TIMES_SQUARE)
-//                    .title("Race Start").snippet("Race Start: 9:00 AM CST")
-//                    .draggable(true));
-//
-//            // marker with custom color
-//            googleMap.addMarker(new MarkerOptions()
-//                    .position(BROOKLYN_BRIDGE)
-//                    .title("First Pit Stop")
-//                    .icon(BitmapDescriptorFactory
-//                            .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-//
-//            // marker with opacity
-//            googleMap.addMarker(new MarkerOptions().position(LOWER_MANHATTAN)
-//                    .title("Second Pit Stop").snippet("Best Time: 6 Secs")
-//                    .alpha(0.4f));
 
             // marker using custom image
             googleMap.addMarker(new MarkerOptions()
@@ -99,18 +72,12 @@ public class GoogleMapActivity extends FragmentActivity implements GoogleMap.OnM
             googleMap.addPolyline((new PolylineOptions())
                     .width(5).color(Color.BLUE)
                     .geodesic(true));
-            // move camera to zoom on map
-            //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                    //LOWER_MANHATTAN, 13));
         }
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
         Log.i("GoogleMapActivity", "onMarkerClick");
-        /*Toast.makeText(getApplicationContext(),
-                "Marker Clicked: " + marker.getTitle(), Toast.LENGTH_LONG)
-                .show();*/
         return false;
     }
 
@@ -122,11 +89,7 @@ public class GoogleMapActivity extends FragmentActivity implements GoogleMap.OnM
     @Override
     public void onMarkerDragEnd(Marker marker) {
         toPosition = marker.getPosition();
-    /*    Toast.makeText(
-                getApplicationContext(),
-                "Marker " + marker.getTitle() + " dragged from " + fromPosition
-                        + " to " + toPosition, Toast.LENGTH_LONG).show();
-    */
+
     }
 
     @Override

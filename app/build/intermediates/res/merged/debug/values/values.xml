@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -24,14 +24,14 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
     <color name="body_text_1">#de000000</color>
     <color name="body_text_2">#8a000000</color>
     <color name="body_text_3">#60000000</color>
     <color name="body_text_disabled">#44000000</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -41,13 +41,13 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="cardview_dark_background">#FF202020</color>
     <color name="cardview_light_background">#FFFAFAFA</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="circular_progress_default_background">#787878</color>
     <color name="circular_progress_default_progress">#bada55</color>
@@ -56,7 +56,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/common_colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
@@ -68,13 +68,13 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="crimson">#D03333</color>
     <color name="crimson_dark">#B03333</color>
     <color name="dark_gray">#505050</color>
     <color name="darker_gray">#303030</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
@@ -85,17 +85,17 @@
     <color name="design_fab_stroke_top_outer_color">#2EFFFFFF</color>
     <color name="design_snackbar_background_color">#323232</color>
     <color name="design_textinput_error_color">#FFDD2C00</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="edit_text_dark_gray">#4a4a4a</color>
     <color name="edit_text_light_gray">#cccccc</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
@@ -103,11 +103,11 @@
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="light_gray">#A0A0A0</color>
     <color name="lighter_gray">#E0E0E0</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
@@ -121,11 +121,11 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="medium_gray">#808080</color>
     <color name="off_white">#EEEEEE</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
@@ -145,7 +145,7 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="theme_black">#404041</color>
     <color name="theme_blue">#0c7bf8</color>
@@ -208,7 +208,7 @@
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/></declare-styleable>
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -277,7 +277,7 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="action_bar_height">56dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -285,12 +285,12 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="campaign_height">320dp</dimen>
     <dimen name="campaign_width">240dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_fab_border_width">0.5dp</dimen>
@@ -320,11 +320,11 @@
     <dimen name="design_tab_scrollable_min_width">72dp</dimen>
     <dimen name="design_tab_text_size">14sp</dimen>
     <dimen name="design_tab_text_size_2line">12sp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="font_huge">36sp</dimen>
@@ -335,12 +335,12 @@
     <dimen name="font_small">14sp</dimen>
     <dimen name="font_smaller">12sp</dimen>
     <dimen name="font_tiny">10sp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="horizontalMargin">16dp</dimen>
     <dimen name="icon_huge">64dp</dimen>
@@ -349,10 +349,10 @@
     <dimen name="icon_small">40dp</dimen>
     <dimen name="icon_smaller">32dp</dimen>
     <dimen name="icon_tiny">24dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="keyline_1">16dp</dimen>
     <dimen name="keyline_1_minus_8dp">8dp</dimen>
@@ -367,12 +367,12 @@
     <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_tiny">2dp</dimen>
     <dimen name="navigationDrawerWidth">304dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="padding_from_content">8dp</dimen>
     <dimen name="padding_from_title">16dp</dimen>
@@ -392,7 +392,7 @@
     <dimen name="text_size_xlarge">20sp</dimen>
     <dimen name="text_size_xsmall">11sp</dimen>
     <dimen name="verticalMargin">16dp</dimen>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
@@ -400,34 +400,34 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="home" type="id"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
     <item name="split_action_bar" type="id"/>
     <item name="up" type="id"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <item name="view_offset_helper" type="id"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
     <integer name="cancel_button_image_alpha">127</integer>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="design_snackbar_text_max_lines">2</integer>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/version.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/version.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">7327000</integer>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Find">Search</string>
     <string name="List">List</string>
@@ -437,7 +437,7 @@
     <string name="Showlist">List of paired Bluetooth devices:\n
         (If your device not found please pair it first)</string>
     <string name="Text">Status: -</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -458,21 +458,21 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="about_me">About Me</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">Smart Wallet</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="cancel">Cancel</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/common_strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
     <string name="common_android_wear_update_text">This app won\'t run unless you update the Android Wear app.</string>
@@ -506,11 +506,11 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="commono_google_play_services_api_unavailable_text">This app requires one or more Google Play services that are not currently
 available. Please contact the developer for assistance.</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="confirmationExit">Are you sure you want to exit?</string>
     <string name="control">Use the Buttons to control the devices!</string>
-    <string name="credits">App created by:\nSidhin S Thomas,\nRIT Kottayam\nContact: <a>sidhin.thoams@gmail.com</a></string>
+    <string name="credits">Team Smart Wallet</string>
     <string name="disconnect">Disconnect</string>
     <string name="exit">Exit</string>
     <string name="hello_world">Hello world!</string>
@@ -607,21 +607,21 @@ available. Please contact the developer for assistance.</string>
     <string name="off">Turn Off</string>
     <string name="okay">Okay</string>
     <string name="on">Turn On</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="switchOnBT">Please switch on bluetooth and restart the app!</string>
     <string name="title_activity_bt_scan">btScan</string>
     <string name="title_activity_control">Control</string>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -635,7 +635,7 @@ available. Please contact the developer for assistance.</string>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1572,7 +1572,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:minWidth">56dp</item>
         <item name="android:scaleType">center</item>
     </style>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
         <item name="tabMaxWidth">@dimen/design_tab_max_width</item>
@@ -1584,7 +1584,7 @@ available. Please contact the developer for assistance.</string>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="CardView">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
@@ -1600,7 +1600,7 @@ available. Please contact the developer for assistance.</string>
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
@@ -1802,7 +1802,7 @@ available. Please contact the developer for assistance.</string>
     </style>
     <style name="TextAppearance.AppCompat.Widget.Switch" parent="Base.TextAppearance.AppCompat.Widget.Switch"/>
     <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.Design.CollapsingToolbar.Expanded" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
@@ -1826,7 +1826,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.StatusBar.EventContent" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent=""/>
@@ -1959,7 +1959,7 @@ available. Please contact the developer for assistance.</string>
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
-    <!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
+    <!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.Design.AppBarLayout" parent="android:Widget">
         <item name="elevation">@dimen/design_appbar_elevation</item>

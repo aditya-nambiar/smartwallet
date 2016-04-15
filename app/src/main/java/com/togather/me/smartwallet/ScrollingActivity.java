@@ -58,7 +58,12 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-
+/*
+*
+* Author List: Aditya Nambiar, Siddarth Dutta
+* Filename: ScrollingActivity.java
+* Global Variables: nil
+*/
 public class ScrollingActivity extends AppCompatActivity implements ConnectionCallbacks,
         OnConnectionFailedListener,
         LocationListener {
@@ -74,27 +79,8 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     private double currentLatitude;
     private double currentLongitude;
 
-
-    private Button onBtn;
-    private Button offBtn;
     public static TextView text;
-    private Button findBtn;
-    private Button listBtn;
-    OutputStream mmOutputStream;
-    InputStream mmInputStream;
-    Thread workerThread;
-    byte[] readBuffer;
-    int readBufferPosition;
-    int counter;
-    volatile boolean stopWorker;
 
-    BluetoothSocket mmSocket;
-    BluetoothDevice mmDevice;
-
-    private Set<BluetoothDevice> pairedDevices;
-    private ListView myListView;
-    private ArrayAdapter<String> BTArrayAdapter;
-    private BluetoothAdapter myBluetoothAdapter;
     private static final int REQUEST_ENABLE_BT = 1;
 
 
@@ -107,32 +93,22 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     private BluetoothDevice btDevice = null;
     ReaderThread reader = null;
     private BtTransmission btTransmit;
-    private Boolean sendSuccess ;
-    private Boolean readSuccess ;
     public static File cashlogs;
 
     protected int getLayoutId() {
         return R.layout.activity_listofitems;
     }
-    private void showMsg(String s){
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-
-    }
-
+    /*
+     * Function Name: randInt
+     * Input: min, max
+     * Output: random integer between min and max
+     * Example Call: randInt(3, 10) returns a random number between 3 and 10
+     */
     public static int randInt(int min, int max) {
-
-        // NOTE: This will (intentionally) not run as written so that folks
-        // copy-pasting have to think about how to initialize their
-        // Random instance.  Initialization of the Random instance is outside
-        // the main scope of the question, but some decent options are to have
-        // a field that is initialized once and then re-used as needed or to
-        // use ThreadLocalRandom (if using at least Java 1.7).
         Random rand = new Random();
-
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((max - min) + 1) + min;
-
         return randomNum;
     }
 
@@ -150,11 +126,18 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
     }
 
+    /*
+     * Function Name: initViews
+     * Input: nil
+     * Function to inititate the view of the Activity
+     */
     protected void initViews() throws FileNotFoundException {
 
         busRidesView = (RecyclerView) findViewById(R.id.rv_activity_listofitems);
 
             for (int i = 0; i < 1; i++) {
+
+                // Sample cashflow for demo purposes.
                 CashFlow a = new CashFlow();
                 a.ampm = "PM";
                 a.desp = "Lent to Rahul";
@@ -191,24 +174,13 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
             try {
                 while (false && (line = br.readLine()) != null) {
                     String[] parts = line.split("#");
-                    /*
-                         int time_hours;
-                            int time_minutes;
-                            String ampm;
-                            String desp;
-                            int amt;
-                            double latitude;
-                            double longitude;
-
-                     */
-
-                        String part1 = parts[0]; // 004
-                        String part2 = parts[1]; // 034556
-                    String part3 = parts[0]; // 004
-                    String part4 = parts[1]; // 034556 String part1 = parts[0]; // 004
-                    String part5 = parts[1]; // 034556
-                    String part6 = parts[1]; // 034556 String part1 = parts[0]; // 004
-                    String part7 = parts[1]; // 034556
+                    String part1 = parts[0];
+                    String part2 = parts[1];
+                    String part3 = parts[2];
+                    String part4 = parts[3];
+                    String part5 = parts[4];
+                    String part6 = parts[5];
+                    String part7 = parts[6];
                     CashFlow a = new CashFlow();
                     a.time_hours = Integer.parseInt(part1);
                     a.time_minutes = Integer.parseInt(part2);
@@ -421,13 +393,8 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                     }
                 });
 
-                System.out.println("loc 1" + e);
-                System.out.println("loc 1:"+btTransmit.inStream);
-                System.out.println("loc 1:"+btTransmit.outStream);
-//                goBack();
             }
             if(isConnected=true) {
-//                System.out.println("listening starting");
                 return;
             }
         }
@@ -471,27 +438,25 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
     }
 
-
+   /*
+    * This is the class that is responsible for reading data from the bluetooth connection
+    * It runs a thread that is constantly listening for data
+    * The delimiters used are as follows
+    * 'z' => Amount was given
+    * 'y' => Amount was taken
+    */
     private class ReaderThread extends Thread {
         public Boolean isConnected = false;
-        Thread workerThread;
         byte[] readBuffer;
         int readBufferPosition;
-        int counter;
         boolean stopWorker;
         @Override
         public void run() {
-//            final Handler handler = new Handler();
-            final byte delimiter = 10; //This is the ASCII code for a newline character
-
-
-
             stopWorker = false;
             readBufferPosition = 0;
             readBuffer = new byte[1024];
             boolean br = false;
             if(isConnected=true) {
-                System.out.println("listening starting");
                 String data = "";
                 String time = "";
                 byte bwas = 'a';
@@ -501,7 +466,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
                         if (bytesAvailable > 0) {
                             byte[] packetBytes = new byte[bytesAvailable];
                             btTransmit.inStream.read(packetBytes);
-                            System.out.println("Bytes available:" + bytesAvailable);
 
                             for (int i = 0; i < bytesAvailable; i++) {
                                 byte b = packetBytes[i];
@@ -553,7 +517,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
 
                                     cashFlowList.add(temp);
                                     refresh_file();
-                                    // mAdapter.setItems(cashFlowList);
                                     mAdapter.mItems.add(temp);
                                     ScrollingActivity.this.runOnUiThread(new Runnable() {
 
@@ -595,6 +558,11 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
     }
 
+    /*
+ * Function Name: refresh_file
+ * Input: nil
+ * Function to to refresh the file with the data in the cashflow list in order to maintain persistency.
+ */
     public static void refresh_file() throws IOException {
         PrintWriter writer = null;
         try {
@@ -614,15 +582,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
         for (int i = 0; i < cashFlowList.size(); i++) {
-            /*
-             int time_hours;
-    int time_minutes;
-    String ampm;
-    String desp;
-    int amt;
-    double latitude;
-    double longitude;
-             */
             CashFlow temp = cashFlowList.get(i);;
             bw.write(temp.time_hours + "#"+ temp.time_minutes + "#" + temp.ampm + "#" +temp.desp+ "#" + temp.amt+ "#"+ temp.latitude +"#"+ temp.longitude);
             bw.newLine();
@@ -636,7 +595,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
     public void onStop(){
         super.onStop();
         btTransmit.isRunning=false;
-//        showMsg("Stopping!");
         btTransmit.isRunning=false;
         if(btSocket != null){
             try {
@@ -649,9 +607,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
 
     }
-
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -684,20 +639,6 @@ public class ScrollingActivity extends AppCompatActivity implements ConnectionCa
         }
         return super.onOptionsItemSelected(item);
     }
-
-    final BroadcastReceiver bReceiver = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            // When discovery finds a device
-            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                // Get the BluetoothDevice object from the Intent
-                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                // add the name and the MAC address of the object to the arrayAdapter
-                BTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-                BTArrayAdapter.notifyDataSetChanged();
-            }
-        }
-    };
 
     @Override
     protected void onDestroy() {

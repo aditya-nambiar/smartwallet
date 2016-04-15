@@ -5,4 +5,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>
-<!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/menu/menu_bt_scan.xml -->
+<!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/menu/menu_bt_scan.xml -->

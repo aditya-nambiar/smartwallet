@@ -15,18 +15,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by aditya on 3/11/16.
- */
+/*
+*
+* Author List: Aditya Nambiar, Siddharth Dutta
+* Filename: Adapter.java
+* Functions: onCreateViewHolder, onBindViewHolder, getItem, getItemCount, onClick
+* Global Variables: nil
+*/
 public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
     Context mContext;
+    // This lists holds all cashflows that are displayed in the app
     List<CashFlow> mItems;
     LayoutInflater mInflater;
     private Edit edit_dialog;
-//    private Edit2 edit_dialog2;
-    private InterfaceUtils listener;
-    ImageButton button;
 
     public Adapter(Context context, List<CashFlow> items ) {
         this.mContext = context;
@@ -34,19 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         mItems.addAll(items);
         this.mInflater = LayoutInflater.from(context);
         notifyDataSetChanged();
-        System.out.println("Adapter");
-
-
     }
-
-//    public void setItems(List<CashFlow> items) {
-//        mItems.clear();
-//        mItems.addAll(items);
-//
-//        this.notifyDataSetChanged();
-//    }
-
-
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,10 +50,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         holder.date.setText(temp.date + "/"+temp.month+"/"+temp.year);
         holder.desp.setText(temp.desp);
         holder.amt.setText(String.valueOf(temp.amt));
-        ImageButton moneda = (ImageButton)  holder.itemView.findViewById(R.id.locButton);
-        moneda.setTag(position); //For passing the list item index
+        ImageButton img_button = (ImageButton)  holder.itemView.findViewById(R.id.locButton);
+        img_button.setTag(position); //For passing the list item index
         final int pos = position;
-        moneda.setOnClickListener(new View.OnClickListener() {
+        img_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -77,6 +66,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
         });
     }
 
+    // Returns the Cashflow item at postion @param position
     public CashFlow getItem(int position) {
         return mItems.get(position);
     }
@@ -103,7 +93,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ItemHolder> {
             date = (TextView) itemView.findViewById(R.id.date);
             itemView.setOnClickListener(this);
         }
-
+        
+        /* When a items in the list of cashflows is clicked the below function is called.
+         * It opends the edit_dialog window to edit the information about the cashflow.
+         */
         @Override
         public void onClick(View v) {
 

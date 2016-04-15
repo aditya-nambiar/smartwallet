@@ -109,4 +109,4 @@
         app:layout_anchorGravity="bottom|end" android:src="@android:drawable/ic_menu_my_calendar" />
 
 </android.support.design.widget.CoordinatorLayout>
-<!-- From: file:/C:/Users/G%20K%20Dutta/Desktop/embedded/smartwallet/app/src/main/res/layout/activity_scrolling.xml -->
+<!-- From: file:/Users/aditya/Documents/Togather-android/SmartWallet/app/src/main/res/layout/activity_scrolling.xml -->
